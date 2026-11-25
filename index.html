@@ -1,1 +1,410 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Hub | Discover Movies</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #090b12;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 7%;
+  background: #10131e;
+  border-bottom: 1px solid #252a39;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: #ffb000;
+}
+
+.logo span {
+  color: white;
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #ffb000;
+}
+
+.hero {
+  padding: 85px 7%;
+  background: linear-gradient(90deg, #111827, #271b31, #111827);
+}
+
+.hero h1 {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #c3c3d0;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.hero button {
+  background: #ffb000;
+  color: #111;
+  border: none;
+  padding: 13px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container {
+  padding: 35px 7%;
+}
+
+.section-title {
+  font-size: 25px;
+  margin-bottom: 22px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 22px;
+  background: #171b29;
+  border: 1px solid #34394b;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.filters button {
+  padding: 9px 17px;
+  border: 1px solid #34394b;
+  background: #171b29;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+  background: #ffb000;
+  color: black;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 23px;
+}
+
+.movie-card {
+  background: #151925;
+  border-radius: 9px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+}
+
+.poster {
+  height: 245px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background: linear-gradient(145deg, #253b69, #11131c);
+}
+
+.poster.two {
+  background: linear-gradient(145deg, #6a2836, #15111e);
+}
+
+.poster.three {
+  background: linear-gradient(145deg, #14554d, #10151c);
+}
+
+.poster.four {
+  background: linear-gradient(145deg, #674b24, #18131d);
+}
+
+.poster.five {
+  background: linear-gradient(145deg, #42306f, #11131c);
+}
+
+.poster.six {
+  background: linear-gradient(145deg, #713d25, #15131c);
+}
+
+.movie-info {
+  padding: 15px;
+}
+
+.movie-info h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.movie-info p {
+  color: #a9afbd;
+  font-size: 13px;
+  margin-bottom: 13px;
+}
+
+.download-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: #ffb000;
+  color: #111;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.download-btn:hover {
+  background: #ffc642;
+}
+
+.empty {
+  color: #aaa;
+  text-align: center;
+  padding: 35px;
+  display: none;
+  grid-column: 1 / -1;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #888;
+  background: #10131e;
+  margin-top: 50px;
+  font-size: 13px;
+}
+
+@media(max-width:600px) {
+  header {
+    padding: 18px 5%;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav a {
+    margin: 0 8px;
+  }
+
+  .hero {
+    padding: 60px 6%;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .container {
+    padding: 28px 5%;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .poster {
+    height: 190px;
+    font-size: 19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MOVIE<span>HUB</span></div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#movies">Movies</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Your Movie Destination</h1>
+  <p>Discover movies, explore genres and find your next favourite film.</p>
+  <button onclick="document.getElementById('movies').scrollIntoView({behavior:'smooth'})">
+    Explore Movies
+  </button>
+</section>
+
+<section class="container" id="movies">
+
+  <h2 class="section-title">Explore Our Collection</h2>
+
+  <input
+    type="text"
+    class="search-box"
+    id="search"
+    placeholder="Search movies..."
+  >
+
+  <div class="filters">
+    <button class="active" data-genre="All">All</button>
+    <button data-genre="Action">Action</button>
+    <button data-genre="Drama">Drama</button>
+    <button data-genre="Comedy">Comedy</button>
+    <button data-genre="Adventure">Adventure</button>
+  </div>
+
+  <div class="movie-grid" id="movieGrid">
+
+    <div class="movie-card" data-genre="Action">
+      <div class="poster">THE<br>LAST<br>MISSION</div>
+      <div class="movie-info">
+        <h3>The Last Mission</h3>
+        <p>2025 | Action</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="movie-card" data-genre="Drama">
+      <div class="poster two">BEYOND<br>THE<br>HORIZON</div>
+      <div class="movie-info">
+        <h3>Beyond the Horizon</h3>
+        <p>2024 | Drama</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="movie-card" data-genre="Adventure">
+      <div class="poster three">WILD<br>JOURNEY</div>
+      <div class="movie-info">
+        <h3>Wild Journey</h3>
+        <p>2025 | Adventure</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="movie-card" data-genre="Comedy">
+      <div class="poster four">FUNNY<br>BUSINESS</div>
+      <div class="movie-info">
+        <h3>Funny Business</h3>
+        <p>2023 | Comedy</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="movie-card" data-genre="Action">
+      <div class="poster five">SHADOW<br>FORCE</div>
+      <div class="movie-info">
+        <h3>Shadow Force</h3>
+        <p>2024 | Action</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="movie-card" data-genre="Drama">
+      <div class="poster six">BROKEN<br>PATHS</div>
+      <div class="movie-info">
+        <h3>Broken Paths</h3>
+        <p>2025 | Drama</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <p class="empty" id="empty">No movies found.</p>
+
+  </div>
+</section>
+
+<footer id="about">
+  <p>© 2026 Movie Hub. All rights reserved.</p>
+  <p style="margin-top:8px">A movie discovery and distribution platform.</p>
+</footer>
+
+<script>
+const search = document.getElementById("search");
+const cards = document.querySelectorAll(".movie-card");
+const filters = document.querySelectorAll(".filters button");
+const empty = document.getElementById("empty");
+
+let selectedGenre = "All";
+
+function updateMovies() {
+  const query = search.value.toLowerCase();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    const genre = card.dataset.genre;
+
+    const matchesSearch = title.includes(query);
+    const matchesGenre =
+      selectedGenre === "All" || genre === selectedGenre;
+
+    card.style.display =
+      matchesSearch && matchesGenre ? "block" : "none";
+
+    if (matchesSearch && matchesGenre) visible++;
+  });
+
+  empty.style.display = visible === 0 ? "block" : "none";
+}
+
+search.addEventListener("input", updateMovies);
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    selectedGenre = button.dataset.genre;
+    updateMovies();
+  });
+});
+
+document.querySelectorAll(".download-btn").forEach(button => {
+  button.addEventListener("click", event => {
+    if (button.getAttribute("href") === "#") {
+      event.preventDefault();
+      alert("Download file not added yet. The website owner must add an authorized movie file.");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+
