@@ -133,18 +133,27 @@ nav a:hover {
 .movie-card:hover {
   transform: translateY(-6px);
 }
-
+  
 .poster {
-  height: 245px;
+  height: 285px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 15px;
-  font-size: 24px;
-  font-weight: bold;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: left;
+  padding: 20px;
+  font-size: 25px;
+  line-height: 1.15;
+  font-weight: 900;
   letter-spacing: 2px;
-  background: linear-gradient(145deg, #253b69, #11131c);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid #ffb000;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.8);
+  background:
+    radial-gradient(circle at 75% 20%, #5475ad 0%, transparent 35%),
+    linear-gradient(145deg, #253b69, #090b12);
+}
+
 }
 
 .poster.two {
